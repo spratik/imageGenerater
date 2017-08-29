@@ -29,24 +29,25 @@ int main(int argc,char **argv)
 	uchar *r=rgb_color[2].data;
 
        	
-	ofstream myfile1(argv[2]);
+	ofstream file(argv[2]);
 
-	myfile1 << "P3" << endl;
-	myfile1 << image.size().width << " " << image.size().height << endl;
-	myfile1 << "255" << endl;
+	file << "P3" << endl;
+	file << image.size().width << " " << image.size().height << endl;
+	file << "255" << endl;
 	int count = 0;
 	for(int i = 0; i < (size); i++){
 	
 			if( (count % cols) != 0){
-				myfile1 <<(int) *r++ << " " <<(int) *g++ << " " <<(int) *b++ << " ";
+				file <<(int) *r++ << " " <<(int) *g++ << " " <<(int) *b++ << " ";
 			}else{
-				myfile1 << endl;
+				file << endl;
 			}
 			
 			count++;
 	}
 			
-	myfile1 << endl;
+	file << endl;
+	file.close();
 }
 
 
